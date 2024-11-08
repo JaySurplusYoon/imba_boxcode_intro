@@ -1,0 +1,114 @@
+<div class="preview-item">
+  <div class="preview-title">통합 물류 관리</div>
+  <div class="development-status">개발 완료</div>
+  <div class="warehouse-mock">
+    <div class="mock-sidebar">
+      <div class="location-search">
+        <input type="text" placeholder="로케이션 검색" value="A-12-3" />
+      </div>
+      <div class="warehouse-stats">
+        <div class="stat-item">
+          <div class="stat-label">전체 사용률</div>
+          <div class="stat-value">78%</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">입고 대기</div>
+          <div class="stat-value">23</div>
+        </div>
+      </div>
+    </div>
+    <div class="mock-main">
+      <div class="rack-view">
+        <div class="rack-levels">
+          <span>6F</span>
+          <span>5F</span>
+          <span>4F</span>
+          <span>3F</span>
+          <span>2F</span>
+          <span>1F</span>
+        </div>
+        <div class="rack-grid">
+          <div class="rack-row">
+            <div class="rack-cell" style="background: #ef4444">A1</div>
+            <div class="rack-cell" style="background: #ef5555">A2</div>
+            <div class="rack-cell" style="background: #ef6666">A3</div>
+            <div class="rack-cell" style="background: #ef7777">A4</div>
+            <div class="rack-cell" style="background: #ef8888">A5</div>
+            <div class="rack-cell" style="background: #ef9999">A6</div>
+            <div class="rack-cell" style="background: #efaaaa">A7</div>
+            <div class="rack-cell" style="background: #efbbbb">A8</div>
+          </div>
+          <div class="rack-row">
+            <!-- B1-B8 -->
+          </div>
+          <div class="rack-row">
+            <!-- C1-C8 -->
+          </div>
+          <div class="rack-row">
+            <!-- D1-D8 -->
+          </div>
+          <div class="rack-row">
+            <!-- E1-E8 -->
+          </div>
+          <div class="rack-row">
+            <!-- F1-F8 -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* 이전 스타일은 그대로 유지하고 아래 스타일만 수정/추가 */
+
+  .rack-grid {
+    flex: 1;
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    gap: 1px; /* 간격 줄임 */
+    background: #f1f5f9; /* 배경색 추가 */
+    padding: 1px; /* 패딩 줄임 */
+  }
+
+  .rack-row {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 1px; /* 간격 줄임 */
+  }
+
+  .rack-cell {
+    aspect-ratio: 4/1; /* 비율 더 넓게 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 500;
+    background: #ef4444; /* 기본 색상 설정 */
+  }
+
+  .rack-levels {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 12px;
+    font-size: 16px;
+    color: #6b7280;
+    font-weight: 500;
+  }
+
+  .mock-main {
+    flex: 1;
+    padding: 12px;
+    background: #fff;
+  }
+
+  .rack-view {
+    display: flex;
+    gap: 4px; /* 간격 줄임 */
+    height: 100%;
+    background: #fff;
+    border-radius: 4px;
+  }
+</style>

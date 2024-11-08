@@ -1,0 +1,274 @@
+<div class="preview-item">
+  <div class="preview-title">협업 기능</div>
+
+  <div class="collab-mock">
+    <div class="collab-sidebar">
+      <div class="workspace-header">
+        <div class="workspace-icon">P</div>
+        <div class="workspace-title">프로젝트</div>
+      </div>
+      <div class="nav-items">
+        <div class="nav-item active">
+          <span class="nav-icon">📋</span>
+          <span>작업 대시보드</span>
+        </div>
+        <div class="nav-item">
+          <span class="nav-icon">📈</span>
+          <span>진행 현황</span>
+        </div>
+        <div class="nav-item">
+          <span class="nav-icon">📊</span>
+          <span>보고서</span>
+        </div>
+      </div>
+    </div>
+    <div class="collab-main">
+      <div class="main-header">
+        <h2>작업 대시보드</h2>
+        <div class="header-actions">
+          <button class="create-btn">+ 작업 추가</button>
+        </div>
+      </div>
+      <div class="kanban-board">
+        <div class="kanban-column">
+          <div class="column-header">
+            <span>대기</span>
+            <span class="task-count">3</span>
+          </div>
+          <div class="task-list">
+            <div class="task-card priority-high">
+              <div class="task-title">입고 프로세스 개선</div>
+              <div class="task-meta">
+                <span class="task-label">프로세스</span>
+                <span class="assignee">김OO</span>
+              </div>
+            </div>
+            <div class="task-card">
+              <div class="task-title">재고실사 자동화</div>
+              <div class="task-meta">
+                <span class="task-label">자동화</span>
+                <span class="assignee">이OO</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="kanban-column">
+          <div class="column-header">
+            <span>진행중</span>
+            <span class="task-count">2</span>
+          </div>
+          <div class="task-list">
+            <div class="task-card">
+              <div class="task-title">AI 응답 성능 개선</div>
+              <div class="task-meta">
+                <span class="task-label">AI</span>
+                <span class="assignee">박OO</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="kanban-column">
+          <div class="column-header">
+            <span>완료</span>
+            <span class="task-count">4</span>
+          </div>
+          <div class="task-list">
+            <div class="task-card completed">
+              <div class="task-title">QR코드 스캐너 연동</div>
+              <div class="task-meta">
+                <span class="task-label">개발</span>
+                <span class="assignee">최OO</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .preview-item {
+    width: 1366px;
+    height: 768px;
+    background: #fff;
+    overflow: hidden;
+  }
+
+  .collab-mock {
+    width: 100%;
+    height: calc(100% - 40px);
+    display: flex;
+    background: #fff;
+  }
+
+  .collab-sidebar {
+    width: 240px;
+    background: #f8fafc;
+    border-right: 1px solid #e2e8f0;
+    padding: 20px 0;
+  }
+
+  .workspace-header {
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .workspace-icon {
+    width: 32px;
+    height: 32px;
+    background: #2563eb;
+    color: white;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+  }
+
+  .workspace-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1e293b;
+  }
+
+  .nav-items {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .nav-item {
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #64748b;
+    cursor: pointer;
+  }
+
+  .nav-item.active {
+    background: #eff6ff;
+    color: #2563eb;
+    border-right: 2px solid #2563eb;
+  }
+
+  .nav-icon {
+    font-size: 18px;
+  }
+
+  .collab-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    background: #f8fafc;
+  }
+
+  .main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  .main-header h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1e293b;
+  }
+
+  .create-btn {
+    padding: 8px 16px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .kanban-board {
+    display: flex;
+    gap: 24px;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .kanban-column {
+    flex: 1;
+    background: #f1f5f9;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+  }
+
+  .column-header {
+    padding: 16px;
+    font-weight: 600;
+    color: #475569;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .task-count {
+    background: #e2e8f0;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 14px;
+  }
+
+  .task-list {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+  }
+
+  .task-card {
+    background: white;
+    border-radius: 6px;
+    padding: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .task-card.priority-high {
+    border-left: 3px solid #ef4444;
+  }
+
+  .task-card.completed {
+    opacity: 0.7;
+  }
+
+  .task-title {
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: #1e293b;
+  }
+
+  .task-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .task-label {
+    background: #e2e8f0;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #475569;
+  }
+
+  .assignee {
+    font-size: 12px;
+    color: #64748b;
+  }
+</style>

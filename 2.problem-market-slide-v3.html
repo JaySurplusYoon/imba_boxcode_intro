@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>BoxCode - Problem & Market</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #f8fafc;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          sans-serif;
+        color: #1e293b;
+      }
+
+      .slide {
+        width: 1366px;
+        height: 768px;
+        background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 32px;
+        opacity: 0;
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      .title {
+        font-size: 32px;
+        font-weight: 700;
+        color: #2563eb;
+        margin-bottom: 12px;
+      }
+
+      .subtitle {
+        font-size: 20px;
+        color: #64748b;
+        line-height: 1.5;
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        flex: 1;
+        min-height: 0; /* 중요: 컨텐츠가 부모 높이를 넘지 않게 함 */
+      }
+
+      .chart-container {
+        flex: 1;
+        background: white;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        animation: slideIn 0.8s ease forwards;
+        opacity: 0;
+        animation-delay: 0.2s;
+        min-height: 0; /* 중요: 컨테이너가 부모 높이를 넘지 않게 함 */
+        height: 380px; /* 고정 높이 설정 */
+      }
+
+      .jobs-container {
+        height: 160px; /* 높이 줄임 */
+        background: white;
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        animation: slideIn 0.8s ease forwards;
+        opacity: 0;
+        animation-delay: 0.4s;
+      }
+
+      .chart-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 12px;
+        color: #1e293b;
+      }
+
+      .jobs-grid {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: calc(100% - 32px);
+      }
+
+      .job-item {
+        text-align: center;
+        padding: 12px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .job-item.highlight {
+        background: #dbeafe;
+        transform: scale(1.1);
+        border: 2px solid #2563eb;
+      }
+
+      .job-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #1e293b;
+        margin-bottom: 4px;
+      }
+
+      .job-rank {
+        font-size: 14px;
+        color: #64748b;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .chart-wrapper {
+        position: relative;
+        height: calc(100% - 32px); /* chart-title 높이 제외 */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide">
+      <div class="header">
+        <h1 class="title">생산가능인구가 급격히 감소하고 있습니다</h1>
+        <div class="subtitle">
+          이는 단순한 인력난이 아닌, 산업 전반의 구조적 과제입니다
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="chart-container">
+          <h2 class="chart-title">생산가능인구 감소 추이</h2>
+          <div class="chart-wrapper">
+            <canvas id="populationChart"></canvas>
+          </div>
+        </div>
+
+        <div class="jobs-container">
+          <h2>퇴사율 높은 중소기업 직무</h2>
+          <span style="font-size: smaller">(2020 잡코리아 통계센터)</span>
+          <div class="jobs-grid">
+            <div class="job-item highlight">
+              <div class="job-title">판매/서비스</div>
+              <div class="job-rank">1위</div>
+            </div>
+            <div class="job-item">
+              <div class="job-title">제조</div>
+              <div class="job-rank">2위</div>
+            </div>
+            <div class="job-item highlight">
+              <div class="job-title">고객상담</div>
+              <div class="job-rank">3위</div>
+            </div>
+            <div class="job-item">
+              <div class="job-title">IT/정보통신</div>
+              <div class="job-rank">4위</div>
+            </div>
+            <div class="job-item highlight">
+              <div class="job-title">물류</div>
+              <div class="job-rank">5위</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const populationCtx = document
+        .getElementById('populationChart')
+        .getContext('2d');
+      new Chart(populationCtx, {
+        type: 'line',
+        data: {
+          labels: ['2022', '2025', '2030', '2035', '2040', '2045', '2050'],
+          datasets: [
+            {
+              label: '생산가능인구 (천명)',
+              data: [36757, 35984, 33878, 31527, 29353, 26725, 23984],
+              borderColor: '#2563eb',
+              backgroundColor: 'rgba(37, 99, 235, 0.1)',
+              fill: true,
+              tension: 0.4,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+          scales: {
+            y: {
+              beginAtZero: false,
+              min: 22000 /* 20000에서 22000으로 조정 */,
+              max: 38000 /* 40000에서 38000으로 조정 */,
+              ticks: {
+                callback: function (value) {
+                  return (value / 1000).toFixed(0) + 'M';
+                },
+              },
+              grid: {
+                drawBorder: false,
+              },
+            },
+            x: {
+              grid: {
+                display: false,
+              },
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

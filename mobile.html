@@ -1,0 +1,268 @@
+<div class="preview-item">
+  <div class="preview-title">모바일 앱 화면</div>
+  <div class="development-status">개발 중</div>
+  <div class="mobile-mock">
+    <div class="device-frame">
+      <div class="device-content">
+        <div class="mobile-header">
+          <div class="header-time">9:41</div>
+          <div class="header-icons">
+            <span>📶</span>
+            <span>🔋</span>
+          </div>
+        </div>
+
+        <div class="app-header">
+          <div class="user-info">
+            <div class="greeting">안녕하세요 👋</div>
+            <div class="user-name">김물류 님</div>
+          </div>
+          <div class="notification-bell">🔔</div>
+        </div>
+
+        <div class="quick-actions">
+          <div class="action-card">
+            <div class="action-icon">📥</div>
+            <div class="action-text">입고</div>
+          </div>
+          <div class="action-card">
+            <div class="action-icon">📤</div>
+            <div class="action-text">출고</div>
+          </div>
+          <div class="action-card">
+            <div class="action-icon">🔍</div>
+            <div class="action-text">재고조사</div>
+          </div>
+          <div class="action-card">
+            <div class="action-icon">📊</div>
+            <div class="action-text">리포트</div>
+          </div>
+        </div>
+
+        <div class="task-summary">
+          <div class="section-title">오늘의 할 일</div>
+          <div class="task-list">
+            <div class="task-item">
+              <div class="task-status completed"></div>
+              <div class="task-content">
+                <div class="task-name">A구역 입고 검수</div>
+                <div class="task-meta">09:00 완료</div>
+              </div>
+            </div>
+            <div class="task-item">
+              <div class="task-status in-progress"></div>
+              <div class="task-content">
+                <div class="task-name">B구역 재고실사</div>
+                <div class="task-meta">진행중 • 14/20</div>
+              </div>
+            </div>
+            <div class="task-item">
+              <div class="task-status pending"></div>
+              <div class="task-content">
+                <div class="task-name">C구역 출고 준비</div>
+                <div class="task-meta">시작 예정 15:00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom-nav">
+          <div class="nav-item active">
+            <div class="nav-icon">🏠</div>
+            <div class="nav-text">홈</div>
+          </div>
+          <div class="nav-item">
+            <div class="nav-icon">📋</div>
+            <div class="nav-text">작업</div>
+          </div>
+          <div class="nav-item">
+            <div class="nav-icon">💬</div>
+            <div class="nav-text">메시지</div>
+          </div>
+          <div class="nav-item">
+            <div class="nav-icon">👤</div>
+            <div class="nav-text">내 정보</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .mobile-mock {
+    width: 100%;
+    height: calc(100% - 40px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8fafc;
+    padding: 20px;
+  }
+
+  .device-frame {
+    width: 375px;
+    height: 100%;
+    background: white;
+    border-radius: 40px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .device-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #f8fafc;
+  }
+
+  .mobile-header {
+    background: white;
+    padding: 14px 24px 10px;
+    display: flex;
+    justify-content: space-between;
+    color: #1e293b;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .app-header {
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+  }
+
+  .greeting {
+    color: #64748b;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .user-name {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1e293b;
+  }
+
+  .quick-actions {
+    padding: 24px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    background: white;
+    margin-bottom: 12px;
+  }
+
+  .action-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .action-icon {
+    width: 48px;
+    height: 48px;
+    background: #eff6ff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+  }
+
+  .action-text {
+    font-size: 12px;
+    color: #475569;
+  }
+
+  .task-summary {
+    flex: 1;
+    padding: 24px;
+    background: white;
+  }
+
+  .section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 16px;
+  }
+
+  .task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .task-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .task-status {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .task-status.completed {
+    background: #22c55e;
+  }
+
+  .task-status.in-progress {
+    background: #3b82f6;
+  }
+
+  .task-status.pending {
+    background: #94a3b8;
+  }
+
+  .task-name {
+    font-size: 16px;
+    font-weight: 500;
+    color: #1e293b;
+    margin-bottom: 4px;
+  }
+
+  .task-meta {
+    font-size: 14px;
+    color: #64748b;
+  }
+
+  .bottom-nav {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 16px 0 32px;
+    background: white;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .nav-item.active {
+    color: #2563eb;
+  }
+
+  .nav-icon {
+    font-size: 20px;
+  }
+
+  .nav-text {
+    font-size: 12px;
+    color: #64748b;
+  }
+
+  .nav-item.active .nav-text {
+    color: #2563eb;
+  }
+</style>

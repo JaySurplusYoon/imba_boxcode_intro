@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>BoxCode - Cover</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #f8fafc;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          sans-serif;
+      }
+
+      .slide {
+        width: 1366px;
+        height: 768px;
+        background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+
+      .background-pattern {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.1;
+        background-image: linear-gradient(
+            30deg,
+            #2563eb 12%,
+            transparent 12.5%,
+            transparent 87%,
+            #2563eb 87.5%,
+            #2563eb
+          ),
+          linear-gradient(
+            150deg,
+            #2563eb 12%,
+            transparent 12.5%,
+            transparent 87%,
+            #2563eb 87.5%,
+            #2563eb
+          ),
+          linear-gradient(
+            30deg,
+            #2563eb 12%,
+            transparent 12.5%,
+            transparent 87%,
+            #2563eb 87.5%,
+            #2563eb
+          ),
+          linear-gradient(
+            150deg,
+            #2563eb 12%,
+            transparent 12.5%,
+            transparent 87%,
+            #2563eb 87.5%,
+            #2563eb
+          ),
+          linear-gradient(
+            60deg,
+            #2563eb77 25%,
+            transparent 25.5%,
+            transparent 75%,
+            #2563eb77 75%,
+            #2563eb77
+          ),
+          linear-gradient(
+            60deg,
+            #2563eb77 25%,
+            transparent 25.5%,
+            transparent 75%,
+            #2563eb77 75%,
+            #2563eb77
+          );
+        background-size: 80px 140px;
+        background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+        animation: movePattern 30s linear infinite;
+      }
+
+      .content {
+        position: relative;
+        z-index: 1;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+      }
+
+      .logo-container {
+        margin-bottom: 40px;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease forwards;
+      }
+
+      .logo {
+        font-size: 72px;
+        font-weight: 800;
+        color: #2563eb;
+        letter-spacing: -2px;
+      }
+
+      .subtitle {
+        text-align: center;
+        margin-bottom: 80px;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease forwards 0.3s;
+      }
+
+      .main-subtitle {
+        font-size: 32px;
+        font-weight: 600;
+        color: #1e293b;
+        margin-bottom: 16px;
+      }
+
+      .sub-subtitle {
+        font-size: 20px;
+        color: #64748b;
+      }
+
+      .stats-grid {
+        display: flex;
+        gap: 64px;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease forwards 0.6s;
+      }
+
+      .stat-item {
+        text-align: center;
+        position: relative;
+      }
+
+      .stat-item:not(:last-child):after {
+        content: '';
+        position: absolute;
+        right: -32px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
+        height: 40px;
+        background: #e2e8f0;
+      }
+
+      .stat-number {
+        font-size: 48px;
+        font-weight: 700;
+        color: #2563eb;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .stat-label {
+        font-size: 16px;
+        color: #64748b;
+        white-space: nowrap;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes movePattern {
+        from {
+          background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+        }
+        to {
+          background-position: 1000px 0, 1000px 0, 1040px 70px, 1040px 70px,
+            1000px 0, 1040px 70px;
+        }
+      }
+
+      .corner-shape {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        background: #2563eb;
+        opacity: 0.1;
+        border-radius: 50%;
+      }
+
+      .corner-shape.top-right {
+        top: -150px;
+        right: -150px;
+      }
+
+      .corner-shape.bottom-left {
+        bottom: -150px;
+        left: -150px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide">
+      <div class="background-pattern"></div>
+      <div class="corner-shape top-right"></div>
+      <div class="corner-shape bottom-left"></div>
+      <div class="content">
+        <div class="logo-container">
+          <h1 class="logo">BoxCode</h1>
+        </div>
+        <div class="subtitle">
+          <div class="main-subtitle">
+            대한민국 중소기업의 디지털 혁신 파트너
+          </div>
+          <div class="sub-subtitle">CS부터 물류까지, 원스톱 자동화 솔루션</div>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number">14,000+</div>
+            <div class="stat-label">누적 고객</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">20+</div>
+            <div class="stat-label">시스템 구축 고객</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">4,000+</div>
+            <div class="stat-label">기술지원 채널 팔로워</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>BoxCode - Financial Plan</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #f8fafc;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          sans-serif;
+        color: #1e293b;
+      }
+
+      .slide {
+        width: 1366px;
+        height: 768px;
+        background: linear-gradient(145deg, #1e1b4b 0%, #312e81 100%);
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 32px;
+        opacity: 0;
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      .title {
+        font-size: 32px;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 12px;
+      }
+
+      .subtitle {
+        font-size: 20px;
+        color: #c7d2fe;
+        line-height: 1.5;
+      }
+
+      .content {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 24px;
+        flex: 1;
+      }
+
+      .chart-section {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        animation: slideIn 0.8s ease forwards 0.2s;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .section-title {
+        font-size: 20px;
+        font-weight: 600;
+        color: #1e293b;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .legend-container {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        color: #64748b;
+      }
+
+      .legend-color {
+        width: 12px;
+        height: 12px;
+        border-radius: 3px;
+      }
+
+      .chart-container {
+        flex: 1;
+        position: relative;
+        height: 300px;
+      }
+
+      .info-section {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .info-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        animation: slideIn 0.8s ease forwards;
+      }
+
+      .info-card:nth-child(1) {
+        animation-delay: 0.3s;
+      }
+      .info-card:nth-child(2) {
+        animation-delay: 0.4s;
+      }
+      .info-card:nth-child(3) {
+        animation-delay: 0.5s;
+      }
+
+      .info-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #1e293b;
+        margin-bottom: 16px;
+      }
+
+      .revenue-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .revenue-item {
+        background: #f8fafc;
+        padding: 20px;
+        border-radius: 12px;
+        text-align: center;
+        transition: transform 0.2s ease;
+      }
+
+      .revenue-item:hover {
+        transform: translateY(-4px);
+      }
+
+      .revenue-value {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-size: 28px;
+        font-weight: 700;
+        color: #6366f1;
+        margin-bottom: 8px;
+      }
+
+      .revenue-emoji {
+        font-size: 24px;
+      }
+
+      .revenue-label {
+        font-size: 14px;
+        color: #64748b;
+      }
+
+      .timeline {
+        display: flex;
+        gap: 16px;
+      }
+
+      .timeline-item {
+        flex: 1;
+        background: #f8fafc;
+        padding: 16px;
+        border-radius: 12px;
+        text-align: center;
+      }
+
+      .timeline-date {
+        font-size: 14px;
+        color: #64748b;
+        margin-bottom: 8px;
+      }
+
+      .timeline-event {
+        font-size: 16px;
+        color: #6366f1;
+        font-weight: 600;
+      }
+
+      .usage-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .usage-item {
+        background: #f8fafc;
+        padding: 16px;
+        border-radius: 12px;
+        text-align: center;
+      }
+
+      .usage-value {
+        font-size: 24px;
+        font-weight: 600;
+        color: #6366f1;
+        margin-bottom: 4px;
+      }
+
+      .usage-label {
+        font-size: 14px;
+        color: #64748b;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide">
+      <div class="header">
+        <h1 class="title">이제는 가파른 성장이 시작됩니다</h1>
+        <div class="subtitle">
+          검증된 비즈니스 모델을 기반으로 안정적인 성장을 실현합니다
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="chart-section">
+          <div class="section-title">
+            <span>매출 및 고객사 성장 전망</span>
+            <div class="legend-container">
+              <div class="legend-item">
+                <div class="legend-color" style="background: #6366f1"></div>
+                <span>연간 매출</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-color" style="background: #34d399"></div>
+                <span>고객사 수</span>
+              </div>
+            </div>
+          </div>
+          <div class="chart-container">
+            <canvas id="growthChart"></canvas>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <div class="info-card">
+            <h3 class="info-title">수익 구조</h3>
+            <div class="revenue-grid">
+              <div class="revenue-item">
+                <div class="revenue-value">
+                  <span class="revenue-emoji">💎</span>
+                  <span>30%</span>
+                </div>
+                <div class="revenue-label">SaaS 구독</div>
+              </div>
+              <div class="revenue-item">
+                <div class="revenue-value">
+                  <span class="revenue-emoji">🛠️</span>
+                  <span>30%</span>
+                </div>
+                <div class="revenue-label">시스템 구축</div>
+              </div>
+              <div class="revenue-item">
+                <div class="revenue-value">
+                  <span class="revenue-emoji">📦</span>
+                  <span>40%</span>
+                </div>
+                <div class="revenue-label">MRO/하드웨어</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <h3 class="info-title">투자 유치 계획</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-date">2025</div>
+                <div class="timeline-event">Seed 3억원</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-date">2026</div>
+                <div class="timeline-event">Pre-A 10억원</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <h3 class="info-title">자금 사용 계획</h3>
+            <div class="usage-grid">
+              <div class="usage-item">
+                <div class="usage-value">50%</div>
+                <div class="usage-label">R&D</div>
+              </div>
+              <div class="usage-item">
+                <div class="usage-value">30%</div>
+                <div class="usage-label">마케팅</div>
+              </div>
+              <div class="usage-item">
+                <div class="usage-value">20%</div>
+                <div class="usage-label">운영</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const ctx = document.getElementById('growthChart').getContext('2d');
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: ['2024', '2025', '2026', '2027', '2028'],
+            datasets: [
+              {
+                label: '연간 매출 (억원)',
+                data: [5, 7, 10, 20, 40],
+                borderColor: '#6366f1',
+                backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                fill: true,
+                tension: 0.4,
+                yAxisID: 'y',
+              },
+              {
+                label: '고객사 수',
+                data: [50, 80, 120, 200, 300],
+                borderColor: '#34d399',
+                borderDash: [5, 5],
+                tension: 0.4,
+                yAxisID: 'y1',
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: {
+              mode: 'index',
+              intersect: false,
+            },
+            plugins: {
+              legend: {
+                display: false,
+              },
+              tooltip: {
+                mode: 'index',
+                intersect: false,
+              },
+            },
+            scales: {
+              y: {
+                type: 'linear',
+                display: true,
+                position: 'left',
+                beginAtZero: true,
+                max: 45,
+                ticks: {
+                  callback: function (value) {
+                    return value + '억';
+                  },
+                },
+                grid: {
+                  drawBorder: false,
+                  color: 'rgba(99, 102, 241, 0.1)',
+                },
+              },
+              y1: {
+                type: 'linear',
+                display: true,
+                position: 'right',
+                beginAtZero: true,
+                max: 350,
+                ticks: {
+                  callback: function (value) {
+                    return value + '개';
+                  },
+                },
+                grid: {
+                  drawOnChartArea: false,
+                },
+              },
+              x: {
+                grid: {
+                  display: false,
+                },
+              },
+            },
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

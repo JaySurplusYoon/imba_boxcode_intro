@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>BoxCode - Solution</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #f8fafc;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          sans-serif;
+        color: #1e293b;
+      }
+
+      .slide {
+        width: 1366px;
+        height: 768px;
+        background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 32px;
+        opacity: 0;
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      .title {
+        font-size: 32px;
+        font-weight: 700;
+        color: #2563eb;
+        margin-bottom: 12px;
+      }
+
+      .subtitle {
+        font-size: 20px;
+        color: #64748b;
+        line-height: 1.5;
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        flex: 1;
+      }
+
+      .solution-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        flex: 1;
+      }
+
+      .solution-card {
+        background: white;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        display: flex;
+        flex-direction: column;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      .solution-card:nth-child(1) {
+        animation: slideIn 0.8s ease forwards 0.2s;
+      }
+      .solution-card:nth-child(2) {
+        animation: slideIn 0.8s ease forwards 0.4s;
+      }
+      .solution-card:nth-child(3) {
+        animation: slideIn 0.8s ease forwards 0.6s;
+      }
+
+      .card-icon {
+        width: 60px;
+        height: 60px;
+        background: #dbeafe;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      .card-title {
+        font-size: 20px;
+        font-weight: 600;
+        color: #1e293b;
+        margin-bottom: 16px;
+      }
+
+      .card-description {
+        font-size: 16px;
+        color: #64748b;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      .feature-list {
+        margin-top: auto;
+      }
+
+      .feature-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+        font-size: 14px;
+        color: #475569;
+      }
+
+      .feature-item:before {
+        content: '•';
+        color: #2563eb;
+        font-weight: bold;
+        margin-right: 8px;
+      }
+
+      .business-model {
+        background: white;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        opacity: 0;
+        animation: slideIn 0.8s ease forwards 0.8s;
+      }
+
+      .model-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #1e293b;
+        margin-bottom: 16px;
+      }
+
+      .model-grid {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .model-item {
+        text-align: center;
+        padding: 16px;
+        border-radius: 8px;
+        background: #f8fafc;
+        flex: 1;
+        margin: 0 12px;
+      }
+
+      .model-price {
+        font-size: 24px;
+        font-weight: 700;
+        color: #2563eb;
+        margin-bottom: 8px;
+      }
+
+      .model-description {
+        font-size: 14px;
+        color: #64748b;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .highlight {
+        color: #2563eb;
+        font-weight: 500;
+      }
+
+      .icon {
+        width: 32px;
+        height: 32px;
+        fill: #2563eb;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide">
+      <div class="header">
+        <h1 class="title">생산성 혁신으로 문제를 해결하겠습니다</h1>
+        <div class="subtitle">
+          생성형 AI 기반 자동화부터 물류 프로세스까지, 원스톱 솔루션을
+          제공합니다
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="solution-grid">
+          <div class="solution-card">
+            <div class="card-icon">
+              <svg class="icon" viewBox="0 0 24 24">
+                <path
+                  d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"
+                />
+              </svg>
+            </div>
+            <h3 class="card-title">AI 기반 CS 자동화</h3>
+            <p class="card-description">
+              고객 문의를 이해하고 맞춤형 답변을 제시합니다.
+            </p>
+            <div class="feature-list">
+              <div class="feature-item">실시간 고객 응대 자동화</div>
+              <div class="feature-item">기업 맞춤형 AI 학습</div>
+              <div class="feature-item">24/7 무중단 운영</div>
+            </div>
+          </div>
+          <div class="solution-card">
+            <div class="card-icon">
+              <svg class="icon" viewBox="0 0 24 24">
+                <path
+                  d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"
+                />
+              </svg>
+            </div>
+            <h3 class="card-title">물류 프로세스 통합</h3>
+            <p class="card-description">
+              입고부터 출고까지 모든 물류 프로세스를 하나의 플랫폼에서
+              관리합니다.
+            </p>
+            <div class="feature-list">
+              <div class="feature-item">실시간 재고 관리</div>
+              <div class="feature-item">로케이션 히트맵 관리</div>
+              <div class="feature-item">물류 자동화 시스템 연동</div>
+            </div>
+          </div>
+          <div class="solution-card">
+            <div class="card-icon">
+              <svg class="icon" viewBox="0 0 24 24">
+                <path
+                  d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zM8 15c0-1.66 1.34-3 3-3 .35 0 .69.07 1 .18V6h5v2h-3v7.03c-.02 1.64-1.35 2.97-3 2.97-1.66 0-3-1.34-3-3z"
+                />
+              </svg>
+            </div>
+            <h3 class="card-title">하드웨어 원스톱 지원</h3>
+            <p class="card-description">
+              필요한 모든 장비를 한 번에 제공하고 통합 관리합니다.
+            </p>
+            <div class="feature-list">
+              <div class="feature-item">전용 라벨프린터 제공</div>
+              <div class="feature-item">리더기 및 스캐너 연동</div>
+              <div class="feature-item">소모품 자동 보충</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="business-model">
+          <h3 class="model-title">비즈니스 모델</h3>
+          <div class="model-grid">
+            <div class="model-item">
+              <div class="model-price">월 6만원</div>
+              <div class="model-description">기본형(7인 미만)</div>
+            </div>
+            <div class="model-item">
+              <div class="model-price">월 12만원</div>
+              <div class="model-description">프리미엄(무제한)</div>
+            </div>
+            <div class="model-item">
+              <div class="model-price">15~25%</div>
+              <div class="model-description">MRO몰 마진</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>BoxCode - Product & Technology</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #f8fafc;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          sans-serif;
+        color: #1e293b;
+      }
+
+      .slide {
+        width: 1366px;
+        height: 768px;
+        background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 32px;
+        opacity: 0;
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      .title {
+        font-size: 32px;
+        font-weight: 700;
+        color: #2563eb;
+        margin-bottom: 12px;
+      }
+
+      .subtitle {
+        font-size: 20px;
+        color: #64748b;
+        line-height: 1.5;
+      }
+
+      .content {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 24px;
+        flex: 1;
+      }
+
+      .product-preview {
+        background: white;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        opacity: 0;
+        animation: slideIn 0.8s ease forwards 0.2s;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .preview-item {
+        background: #f8fafc;
+        border-radius: 8px;
+        padding: 16px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .preview-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #475569;
+        margin-bottom: 8px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .preview-image {
+        width: 100%;
+        height: calc(100% - 30px);
+        object-fit: cover;
+        border-radius: 4px;
+        background: #e2e8f0;
+      }
+
+      .tech-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .tech-card {
+        background: white;
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        opacity: 0;
+        animation: slideIn 0.8s ease forwards;
+      }
+
+      .tech-card:nth-child(1) {
+        animation-delay: 0.4s;
+      }
+      .tech-card:nth-child(2) {
+        animation-delay: 0.6s;
+      }
+      .tech-card:nth-child(3) {
+        animation-delay: 0.8s;
+      }
+
+      .tech-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #1e293b;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .tech-icon {
+        width: 24px;
+        height: 24px;
+        fill: #2563eb;
+      }
+
+      .tech-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .tech-item {
+        background: #f1f5f9;
+        padding: 6px 12px;
+        border-radius: 16px;
+        font-size: 14px;
+        color: #475569;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .tech-item.highlight {
+        background: #dbeafe;
+        color: #1e40af;
+        font-weight: 500;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .development-status {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: #dcfce7;
+        color: #166534;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide">
+      <div class="header">
+        <h1 class="title">검증된 제품으로 증명하겠습니다</h1>
+        <div class="subtitle">
+          20여 개 기업의 시스템 구축 경험을 통해 완성된 최적의 솔루션
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="product-preview">
+          <div class="preview-item">
+            <div class="preview-title">AI 기반 CS 대시보드</div>
+            <div class="development-status">개발 예정</div>
+            <img
+              src="https://i.ibb.co/fMVdnhb/image.png"
+              alt="CS Dashboard"
+              class="preview-image"
+            />
+          </div>
+          <div class="preview-item">
+            <div class="preview-title">통합 물류 관리</div>
+            <div class="development-status">개발중</div>
+            <img
+              src="https://i.ibb.co/yPdg1xR/image.png"
+              alt="Logistics Management"
+              class="preview-image"
+            />
+          </div>
+          <div class="preview-item">
+            <div class="preview-title">강력한 협업기능</div>
+            <div class="development-status">개발중</div>
+            <img
+              src="https://i.ibb.co/Km2H1tD/image.png"
+              alt="Inventory Status"
+              class="preview-image"
+            />
+          </div>
+          <div class="preview-item">
+            <div class="preview-title">모바일 앱</div>
+            <div class="development-status">개발 예정</div>
+            <img
+              src="https://i.ibb.co/C1NVdm8/image.png"
+              alt="Mobile App"
+              class="preview-image"
+            />
+          </div>
+        </div>
+
+        <div class="tech-stack">
+          <div class="tech-card">
+            <h3 class="tech-title">
+              <svg class="tech-icon" viewBox="0 0 24 24">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+                />
+              </svg>
+              핵심 기술 스택
+            </h3>
+            <div class="tech-list">
+              <div class="tech-item highlight">GEN AI</div>
+              <div class="tech-item highlight">FULL STACK ENGINEERING</div>
+              <div class="tech-item">React</div>
+              <div class="tech-item">NEST JS</div>
+              <div class="tech-item">Flutter</div>
+              <div class="tech-item">AWS</div>
+            </div>
+          </div>
+
+          <div class="tech-card">
+            <h3 class="tech-title">
+              <svg class="tech-icon" viewBox="0 0 24 24">
+                <path
+                  d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6C7.8 12.16 7 10.63 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"
+                />
+              </svg>
+              KEY SOLUTIONS
+            </h3>
+            <div class="tech-list">
+              <div class="tech-item highlight">하드웨어 유연성 확보</div>
+              <div class="tech-item highlight">레거시 시스템 브릿지</div>
+              <div class="tech-item">확장성</div>
+            </div>
+          </div>
+
+          <div class="tech-card">
+            <h3 class="tech-title">
+              <svg class="tech-icon" viewBox="0 0 24 24">
+                <path
+                  d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"
+                />
+              </svg>
+              개발 로드맵
+            </h3>
+            <div
+              class="tech-list"
+              style="display: flex; flex-direction: column"
+            >
+              <div class="tech-item highlight">2024 Q4: 물류 MVP 출시</div>
+              <div class="tech-item">2025 Q1: 협업기능 출시</div>
+              <div class="tech-item">2025 Q2: AI기반 CS 출시</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

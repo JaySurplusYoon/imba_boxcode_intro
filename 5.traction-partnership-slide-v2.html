@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>BoxCode - Traction & Partnership</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #f8fafc;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          sans-serif;
+        color: #1e293b;
+      }
+
+      .slide {
+        width: 1366px;
+        height: 768px;
+        background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 32px;
+        opacity: 0;
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      .title {
+        font-size: 32px;
+        font-weight: 700;
+        color: #2563eb;
+        margin-bottom: 12px;
+      }
+
+      .subtitle {
+        font-size: 20px;
+        color: #64748b;
+        line-height: 1.5;
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        flex: 1;
+      }
+
+      .showcase-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        flex: 1;
+      }
+
+      .showcase-card {
+        background: white;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        opacity: 0;
+        animation: slideIn 0.8s ease forwards;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .showcase-card:nth-child(1) {
+        animation-delay: 0.2s;
+      }
+      .showcase-card:nth-child(2) {
+        animation-delay: 0.3s;
+      }
+      .showcase-card:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+
+      .showcase-image {
+        width: 100%;
+        height: 280px;
+        object-fit: cover;
+        background: #f1f5f9;
+      }
+
+      .showcase-content {
+        padding: 20px;
+      }
+
+      .showcase-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #1e293b;
+        margin-bottom: 8px;
+      }
+
+      .showcase-description {
+        font-size: 14px;
+        color: #64748b;
+        line-height: 1.5;
+      }
+
+      .stat-chip {
+        display: inline-flex;
+        align-items: center;
+        background: #dbeafe;
+        color: #1e40af;
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 14px;
+        font-weight: 500;
+        margin-top: 12px;
+      }
+
+      .partners-footer {
+        padding: 24px;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        opacity: 0;
+        animation: slideIn 0.8s ease forwards 0.5s;
+      }
+
+      .partners-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #1e293b;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .partners-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 32px;
+        place-items: center;
+      }
+
+      .partner-logo {
+        height: 40px;
+        width: 120px;
+        object-fit: contain;
+        transition: filter 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide">
+      <div class="header">
+        <h1 class="title">
+          다양한 규모의 고객사와 국내외 파트너가 함께 합니다
+        </h1>
+        <div class="subtitle">
+          다양한 산업 현장에서 검증된 박스코드의 솔루션
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="showcase-container">
+          <div class="showcase-card">
+            <img
+              src="https://i.ibb.co/FnytXpL/image.png"
+              alt="반도체 제조장비"
+              class="showcase-image"
+            />
+            <div class="showcase-content">
+              <h3 class="showcase-title">반도체 설비공장</h3>
+              <p class="showcase-description">
+                Electron 기반의 조립공정 WMS 구축으로 생산성 혁신
+              </p>
+              <div class="stat-chip">생산성 30% 향상</div>
+            </div>
+          </div>
+
+          <div class="showcase-card">
+            <img
+              src="https://i.ibb.co/stknPKp/image.png"
+              alt="광성그룹"
+              class="showcase-image"
+            />
+            <div class="showcase-content">
+              <h3 class="showcase-title">조명 제조사</h3>
+              <p class="showcase-description">
+                바코드 검수시스템으로 완벽한 품질 관리 실현
+              </p>
+              <div class="stat-chip">NG 100% 감소</div>
+            </div>
+          </div>
+
+          <div class="showcase-card">
+            <img
+              src="https://i.ibb.co/55vLTV0/image.png"
+              alt="LG전자"
+              class="showcase-image"
+            />
+            <div class="showcase-content">
+              <h3 class="showcase-title">LG전자 라벨 시스템 구축</h3>
+              <p class="showcase-description">
+                통합 라벨발행 시스템으로 업무 효율 극대화
+              </p>
+              <div class="stat-chip">기존대비 소모품효율 50%이상 증가</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="partners-footer">
+          <h3 class="partners-title">파트너십</h3>
+          <div class="partners-grid">
+            <img
+              class="partner-logo"
+              src="https://i.ibb.co/cv7Hj53/image.png"
+              alt="Honeywell"
+            />
+            <img
+              class="partner-logo"
+              src="https://i.ibb.co/ZLhBdbV/image.png"
+              alt="Zebra"
+            />
+            <img
+              class="partner-logo"
+              src="https://i.ibb.co/9cFnnfp/image.png"
+              alt="Geek+"
+            />
+            <img
+              class="partner-logo"
+              src="https://i.ibb.co/RP1yThz/image.png"
+              alt="Xprinter"
+            />
+            <img
+              class="partner-logo"
+              src="https://i.ibb.co/TPZFTPH/image.png"
+              alt="빅솔론"
+            />
+            <img
+              class="partner-logo"
+              src="https://i.ibb.co/nnsh1yf/image.png"
+              alt="Datalogic"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
