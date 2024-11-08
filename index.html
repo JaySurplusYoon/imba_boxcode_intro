@@ -258,8 +258,9 @@
 
       // 키보드 네비게이션
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight') changeSlide(1);
-        if (e.key === 'ArrowLeft') changeSlide(-1);
+        if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter')
+          changeSlide(1);
+        if (e.key === 'ArrowLeft' || e.key === 'Backspace') changeSlide(-1);
       });
       const growthCtx = document.getElementById('growthChart').getContext('2d');
       new Chart(growthCtx, {
